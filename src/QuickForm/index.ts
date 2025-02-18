@@ -4,12 +4,8 @@ import SurveyType from "../fetchSurvey/SurveyType";
 import createForm from "./createForm";
 import getStyles from "./getStyles";
 import Options from "./Options";
-
-export interface FeedbackData {
-  rating: number;
-  comment: string;
-  apiKey: string;
-}
+import FeedbackData from "../postReview/FeedbackData";
+import postReview from "../postReview";
 
 export default class QuickForm {
   private static apiKey: string;
@@ -99,7 +95,6 @@ export default class QuickForm {
       }
     });
 
-    // Cancel button event listener
     const cancelButton = document.querySelector("#quick-review-cancel");
     cancelButton?.addEventListener("click", () => {
       if (onCancel) onCancel();
@@ -109,20 +104,7 @@ export default class QuickForm {
   private static async submitFeedback(
     data: FeedbackData
   ): Promise<{ success: boolean }> {
-    try {
-      const response = await fetch(`${apiUrl}/send_feedback`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      return { success: response.ok };
-    } catch (error) {
-      console.error("Failed to submit feedback:", error);
-      return { success: false };
-    }
+    return postReview(data);
   }
 
   private static showSuccessPage(
