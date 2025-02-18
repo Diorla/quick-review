@@ -1,3 +1,3 @@
-export function add(a: number, b: number) {
-  return a + b;
-}
+import objectToStyle from "./object-to-style";
+
+export { objectToStyle };
