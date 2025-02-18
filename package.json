@@ -1,0 +1,15 @@
+{
+  "name": "quick-review",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Ade Adeola",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3"
+  }
+}
